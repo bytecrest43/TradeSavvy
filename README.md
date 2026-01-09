@@ -2,16 +2,17 @@
 
 > **The AI-Powered Digital Trading Institution for Intelligent Market Analysis**
 
-[![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)](https://nextjs.org/)
-[![Convex](https://img.shields.io/badge/Convex-Backend-orange?logo=convex)](https://convex.dev/)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-blue?logo=postgresql)](https://www.postgresql.org/)
-[![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?logo=docker)](https://www.docker.com/)
-[![TradingView](https://img.shields.io/badge/TradingView-API-green)](https://www.tradingview.com/)
-[![Telegram](https://img.shields.io/badge/Telegram-Bot-blue?logo=telegram)](https://telegram.org/)
+[![Python](https://img.shields.io/badge/Python-blue?logo=python)](https://www.python.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-black?logo=next.js)](https://nextjs.org/)
+[![Convex](https://img.shields.io/badge/Convex-orange?logo=convex)](https://convex.dev/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-blue?logo=postgresql)](https://www.postgresql.org/)
+[![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker)](https://www.docker.com/)
+[![TradingView](https://img.shields.io/badge/TradingView-green)](https://www.tradingview.com/)
+[![Telegram](https://img.shields.io/badge/Telegram-blue?logo=telegram)](https://telegram.org/)
 [![License](https://img.shields.io/badge/License-Proprietary-red)](LICENSE)
 
 <p align="center">
-  <strong>A Product of ByteCrest Financial Technology</strong><br/>
+  <strong>A Product of ByteCrest Corp</strong><br/>
   <em>"Think in SSC" — Systems, Security, and Compliance</em><br/>
   <a href="https://bytecrxt.com">bytecrxt.com</a>
 </p>
@@ -24,14 +25,14 @@ TradeSavvy is a production-grade **AI-native digital financial institution** tha
 
 At its core is a **governed AI co-worker** that synthesizes information across markets, generates actionable signals, and delivers structured insights through a multi-department architecture enforcing Systems, Security, and Compliance (SSC) principles. Each decision flows through specialized AI departments—from Market Intelligence to Risk Management—ensuring every output is validated, traceable, and aligned with institutional governance standards.
 
----
-
 ### Powered By
 
 - **Artificial Intelligence & Machine Learning Models** for pattern recognition and market analysis
 - **Algorithmic Trading Rules** for precise signal generation and risk management
 - **Web Scraping & Data Intelligence** for real-time market data and global financial news
 - **Microservice Architecture** where departments work together for optimal results
+
+---
 
 ### Three Core Services
 
