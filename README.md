@@ -1,16 +1,25 @@
 # TradeSavvy
 
-## A Digital Trading Institution
+The AI-Powered Digital Trading Institution for Intelligent Market Analysis
 
-### ByteCrest Financial Technology
+![Python](https://img.shields.io/badge/python-3.12.7-blue.svg)
+![TradingView](https://img.shields.io/badge/TradingView-API-green.svg)
+![Telegram](https://img.shields.io/badge/Telegram-Bot-blue.svg)
+![License](https://img.shields.io/badge/license-Proprietary-red.svg)
+
+**A Product of ByteCrest Financial Technology**  
+*"Think in SSC" — Systems, Security, and Compliance*  
+[bytecrxt.com](https://bytecrxt.com)
+
+TradeSavvy is a production-grade **AI-native digital financial institution** that provides institutional-grade market intelligence, algorithmic trading support, and global financial news. Designed for traders across Forex, Cryptocurrency, Equities, and Commodities markets, TradeSavvy delivers real-time analysis, precise trading signals, and AI-filtered news that adapts to market conditions and user preferences.
+
+At its core is a **governed AI co-worker** that synthesizes information across markets, generates actionable signals, and delivers structured insights through a multi-department architecture enforcing Systems, Security, and Compliance (SSC) principles. Each decision flows through specialized AI departments—from Market Intelligence to Risk Management—ensuring every output is validated, traceable, and aligned with institutional governance standards.
 
 ---
 
 ## I. INSTITUTIONAL PROFILE
 
 ### System Definition
-
-TradeSavvy is an **AI-native digital financial institution** designed to provide institutional-grade market intelligence, algorithmic trading support, and global financial insight. The system acts as a **governed AI co-worker** for traders, synthesizing information across markets, generating actionable signals, and delivering structured insights while enforcing Systems, Security, and Compliance (SSC) principles.
 
 #### Powered By
 
