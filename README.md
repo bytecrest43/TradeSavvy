@@ -13,7 +13,7 @@
 
 <p align="center">
   <strong>A Product of ByteCrest Corp</strong><br/>
-  <em>"Think in SSC" — Systems, Security, and Compliance</em><br/>
+  <em>"Think in SSC"   Systems, Security, and Compliance</em><br/>
   <a href="https://bytecrxt.com">bytecrxt.com</a>
 </p>
 
@@ -23,7 +23,7 @@
 
 TradeSavvy is a production-grade **AI-native digital financial institution** that provides institutional-grade market intelligence, algorithmic trading support, and global financial news. Designed for traders across Forex, Cryptocurrency, Equities, and Commodities markets, TradeSavvy delivers real-time analysis, precise trading signals, and AI-filtered news that adapts to market conditions and user preferences.
 
-At its core is a **governed AI co-worker** that synthesizes information across markets, generates actionable signals, and delivers structured insights through a multi-department architecture enforcing Systems, Security, and Compliance (SSC) principles. Each decision flows through specialized AI departments—from Market Intelligence to Risk Management—ensuring every output is validated, traceable, and aligned with institutional governance standards.
+At its core is a **governed AI co-worker** that synthesizes information across markets, generates actionable signals, and delivers structured insights through a multi-department architecture enforcing Systems, Security, and Compliance (SSC) principles. Each decision flows through specialized AI departments from Market Intelligence to Risk Management ensuring every output is validated, traceable, and aligned with institutional governance standards.
 
 ### Powered By
 
@@ -680,7 +680,7 @@ change rapidly, and past analytical accuracy does not guarantee future results.
 
 ## Preamble
 
-The preceding documentation describes TradeSavvy as it exists today—a monolithic Telegram bot providing technical analysis signals. What follows is the strategic architectural vision for transforming this foundation into an institutional-grade, multi-agent algorithmic trading system.
+The preceding documentation describes TradeSavvy as it exists today a monolithic Telegram bot providing technical analysis signals. What follows is the strategic architectural vision for transforming this foundation into an institutional-grade, multi-agent algorithmic trading system.
 
 This roadmap is grounded in the existing codebase's intent: market data consumption via TradingView, technical indicator synthesis, and structured signal delivery. The evolution path extends these capabilities into a governed, adversarial-aware, compliance-first trading institution.
 
@@ -688,7 +688,7 @@ This roadmap is grounded in the existing codebase's intent: market data consumpt
 
 ---
 
-## I. SYSTEMS — ARCHITECTURAL TRANSFORMATION
+## I. SYSTEMS   ARCHITECTURAL TRANSFORMATION
 
 ### From Monolith to Multi-Agent Intelligence
 
@@ -704,11 +704,11 @@ TradeSavvy is evolving from a single-path analysis flow into a distributed, even
 
 ### Core Architectural Principles
 
-1. **Intelligence is distributed** — No single component holds complete market understanding
-2. **Governance supersedes speed** — Correct decisions matter more than fast decisions
-3. **Agents have bounded mandates** — Each agent owns a specific domain and cannot exceed it
-4. **Orchestration is explicit** — No implicit coordination; all inter-agent communication is logged
-5. **Failure is expected** — Systems are designed for graceful degradation, not assumed reliability
+1. **Intelligence is distributed**   No single component holds complete market understanding
+2. **Governance supersedes speed**   Correct decisions matter more than fast decisions
+3. **Agents have bounded mandates**   Each agent owns a specific domain and cannot exceed it
+4. **Orchestration is explicit**   No implicit coordination; all inter-agent communication is logged
+5. **Failure is expected**   Systems are designed for graceful degradation, not assumed reliability
 
 ---
 
@@ -804,7 +804,7 @@ The system operates through specialized agents, each with distinct authority bou
 
 **Domain:** Capital protection  
 **Authority:** Drawdown limits, exposure controls, leverage constraints, correlation management, tail-risk assessment  
-**Constraints:** **Absolute veto authority** — can reject any signal regardless of source  
+**Constraints:** **Absolute veto authority**   can reject any signal regardless of source  
 **Outputs:** Risk-adjusted position limits, approval/rejection with rationale  
 
 **Veto Conditions (Non-Exhaustive):**
@@ -847,7 +847,7 @@ The system operates through specialized agents, each with distinct authority bou
 
 **Domain:** Order translation  
 **Authority:** Converts approved decisions into executable intent  
-**Constraints:** **Never acts autonomously** — requires explicit CEO authorization  
+**Constraints:** **Never acts autonomously**   requires explicit CEO authorization  
 **Outputs:** Order specifications with slippage estimates, timing recommendations  
 
 ---
@@ -877,7 +877,7 @@ The system operates through specialized agents, each with distinct authority bou
 
 ---
 
-#### CEO Agent — Final Authority
+#### CEO Agent   Final Authority
 
 **Domain:** Sovereign decision issuance  
 **Authority:** Single point of final authorization for all capital deployment  
@@ -893,7 +893,7 @@ The system operates through specialized agents, each with distinct authority bou
 
 ---
 
-## III. DECISION FLOW — GOVERNED EXECUTION
+## III. DECISION FLOW   GOVERNED EXECUTION
 
 ### Principle: Discipline Supersedes Speed
 
@@ -910,7 +910,7 @@ The decision pipeline enforces sequential governance. No step may be bypassed. F
 ┌─────────────────────────────────────────────────────────────────────┐
 │ PHASE 2: INDEPENDENT ANALYSIS                                       │
 │ Market Intelligence + Quant Research agents operate in parallel     │
-│ No coordination at this phase — independence preserves signal       │
+│ No coordination at this phase   independence preserves signal       │
 │ Output: Signal proposals with confidence and assumptions            │
 └─────────────────────────────────────┬───────────────────────────────┘
                                       │
@@ -972,7 +972,7 @@ The decision pipeline enforces sequential governance. No step may be bypassed. F
 
 ---
 
-## IV. SECURITY — CAPITAL AS ADVERSARIAL ENVIRONMENT
+## IV. SECURITY   CAPITAL AS ADVERSARIAL ENVIRONMENT
 
 ### Threat Model
 
@@ -989,10 +989,10 @@ Markets are adversarial systems. The security posture acknowledges:
 ### Capital Preservation Hierarchy
 
 ```text
-1. SURVIVAL      — Preserve capital base
-2. STABILITY     — Avoid catastrophic drawdowns
-3. CONSISTENCY   — Maintain risk-adjusted returns
-4. GROWTH        — Compound returns over time
+1. SURVIVAL        Preserve capital base
+2. STABILITY       Avoid catastrophic drawdowns
+3. CONSISTENCY     Maintain risk-adjusted returns
+4. GROWTH          Compound returns over time
 ```
 
 **Inaction is preferable to unjustified action.**
@@ -1018,7 +1018,7 @@ Security is expressed through governance, not obscurity:
 
 ---
 
-## V. COMPLIANCE — TRACEABILITY BY DESIGN
+## V. COMPLIANCE   TRACEABILITY BY DESIGN
 
 ### Audit Philosophy
 
@@ -1061,7 +1061,7 @@ The architecture considers jurisdictional constraints as first-class design conc
 
 ---
 
-## VI. OUTPUT CONTRACT — CEO ADDRESS
+## VI. OUTPUT CONTRACT   CEO ADDRESS
 
 ### Purpose
 
@@ -1190,11 +1190,11 @@ The following capabilities represent institutional scaling directions. They are 
 
 ### Operational Maxims
 
-1. **No trade without authorization** — CEO Agent is the single point of execution authority
-2. **No signal without confidence bounds** — Uncertainty is explicitly quantified
-3. **No model without failure conditions** — Every strategy has documented breakdown scenarios
-4. **No decision without audit trail** — Complete provenance for all actions
-5. **No autonomous execution** — Human-reviewable output for all capital deployment
+1. **No trade without authorization**   CEO Agent is the single point of execution authority
+2. **No signal without confidence bounds**   Uncertainty is explicitly quantified
+3. **No model without failure conditions**   Every strategy has documented breakdown scenarios
+4. **No decision without audit trail**   Complete provenance for all actions
+5. **No autonomous execution**   Human-reviewable output for all capital deployment
 
 ---
 
