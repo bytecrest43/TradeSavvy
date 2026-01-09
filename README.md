@@ -19,19 +19,13 @@ TradeSavvy is an **AI-native digital financial institution** designed to provide
 - **Web Scraping & Data Intelligence** for real-time market data and global financial news
 - **Microservice Architecture** where departments work together for optimal results
 
-## **Three Core Services:**
+### Three Core Services
 
-### 🎯 **1. Market Analysis & Financial Advisory Service**
+**🎯 Market Analysis & Financial Advisory** - Natural language market queries → Structured, multi-market intelligence reports
 
-Natural language market queries → Structured, multi-market intelligence reports
+**📈 Trading Signal Generation** - Real-time algorithmic signals → Precise entry/exit points with risk management
 
-### 📈 **2. Trading Signal Generation Service**
-
-Real-time algorithmic signals → Precise entry/exit points with risk management
-
-### 🌍 **3. Global Financial & AI News Service**
-
-Filtered, verified news → Structured summaries eliminating noise and fake news
+**🌍 Global Financial & AI News** - Filtered, verified news → Structured summaries eliminating noise and fake news
 
 ### Operational Scope
 
@@ -45,197 +39,284 @@ Filtered, verified news → Structured summaries eliminating noise and fake news
 | **Interface Layer** | Telegram Bot API with structured JSON outputs | Conversational AI, user memory, personalized insights |
 | **Data Sources** | TradingView, financial news feeds, verified global sources | Real-time data pipelines, web scraping, API integrations |
 
-### 🎯 Core Service 1: Market Analysis & Financial Advisory
+### Core Services Detail
 
-**Purpose:** Empowers users to query global financial markets in natural language and receive structured, multi-market intelligence.
+#### 🎯 Market Analysis & Financial Advisory
 
 **User Experience:** `"Analyze EUR/USD and BTC market trends"` → Comprehensive market intelligence report
 
-**AI Workflow:**
+**AI Workflow:** Market Intelligence Agent → Quant Research Agent → Risk Manager → CEO Microservice
 
-1. **Market Intelligence Agent** gathers data, validates and normalizes feeds
-2. **Quant Research Agent** analyzes patterns, technical indicators, and historical data using ML models
-3. **Risk Manager** evaluates potential exposure, volatility, and tail risks
-4. **CEO Microservice** compiles analysis into coherent, user-friendly report stored against user ID
-
-**Output Format:**
+**Sample Output:**
 
 ```json
 {
   "query": "EUR/USD and BTC market trends",
-  "timestamp": "2026-01-08T12:00:00Z",
   "market_summary": {
-    "forex": {
-      "pairs_analyzed": ["EUR/USD"],
-      "trend": "Bullish",
-      "volatility": "Moderate",
-      "key_levels": {"support": 1.0800, "resistance": 1.1000}
-    },
-    "crypto": {
-      "pairs_analyzed": ["BTCUSDT"],
-      "trend": "Neutral",
-      "volatility": "High",
-      "key_levels": {"support": 24300, "resistance": 26500}
-    }
+    "forex": {"pairs_analyzed": ["EUR/USD"], "trend": "Bullish", "volatility": "Moderate", "key_levels": {"support": 1.0800, "resistance": 1.1000}},
+    "crypto": {"pairs_analyzed": ["BTCUSDT"], "trend": "Neutral", "volatility": "High", "key_levels": {"support": 24300, "resistance": 26500}}
   },
-  "risks": ["Macro uncertainty", "High short-term volatility"],
-  "recommendations": "Monitor price near key support/resistance levels. Consider hedging BTC exposure if volatility spikes."
+  "risks": ["Macro uncertainty", "High short-term volatility"]
 }
 ```
 
-### 📈 Core Service 2: Trading Signal Generation
+#### 📈 Trading Signal Generation
 
-**Purpose:** Provides real-time algorithmic trading signals for precise execution and decision-making.
+TradeSavvy offers **two distinct operational modes** for trading signal generation, allowing users to choose between automated execution and manual implementation:
 
-**User Experience:** Request specific asset → ML-powered signal with entry/exit/risk parameters
+---
 
-**AI Workflow:**
+##### **Option A: Automated Trading with Brokerage Integration** 🤖
 
-1. **Signal request received** and market status verified
-2. **Quant Research** computes entry, exit, and stop-loss points using ML, algorithmic trading models, and technical indicators
-3. **Risk Manager** ensures signals comply with risk policy and position sizing rules
-4. **CEO Microservice** formats output for clarity and auditability
+**Description:** Users connect their brokerage accounts (Exness, MT5, Deriv) and authorize TradeSavvy to execute trades on their behalf based on AI-powered analysis.
 
-**Output Format:**
+**User Experience:**
+
+1. **Connection:** User connects brokerage account via secure API integration
+2. **Instruction:** User provides high-level trading mandate
+   - *"Trade Gold for me"*
+   - *"Find opportunities in Forex markets"*
+   - *"Manage my crypto portfolio with 2% risk per trade"*
+3. **Execution:** TradeSavvy processes instruction through departmental workflow and executes trades automatically
+
+**Automated Trading Workflow:**
+
+```text
+USER INSTRUCTION
+    ↓
+MARKET INTELLIGENCE DEPARTMENT (Scans markets, identifies opportunities)
+    ↓
+QUANT RESEARCH DEPARTMENT (Generates signals with ML models)
+    ↓
+RISK MANAGEMENT DEPARTMENT (Evaluates, applies position sizing, VETO CHECKPOINT)
+    ↓
+PORTFOLIO MANAGEMENT DEPARTMENT (Checks correlation with existing positions)
+    ↓
+STRATEGIC OVERSIGHT DEPARTMENT (Validates macro alignment)
+    ↓
+COMPLIANCE & AUDIT DEPARTMENT (Logs decision chain)
+    ↓
+EXECUTIVE AUTHORITY (Final authorization - can be automated or require human approval)
+    ↓
+EXECUTION ENGINE → BROKERAGE API (Automated trade execution)
+    ↓
+USER NOTIFICATION (Trade confirmation with complete rationale)
+```
+
+**Supported Brokerages:**
+
+- **Exness** (Forex, Metals, Commodities)
+- **MetaTrader 5 (MT5)** (Multi-asset trading)
+- **Deriv** (Forex, Synthetic Indices, Commodities)
+
+**Safety Features:**
+
+- Daily/weekly loss limits enforced by Risk Management Department
+- Maximum position size constraints
+- Real-time portfolio risk monitoring
+- Emergency stop-loss protocols
+- Human override capability at any time
+- Complete audit trail of all automated decisions
+
+**Sample Automated Trade Output:**
 
 ```json
 {
-  "currency": "EUR/USD",
-  "current_trading_session": "London",
-  "price_real_time": 1.0895,
-  "entry_price": 1.0902,
-  "tp1": 1.0940,
-  "tp2": 1.0975,
-  "sl": 1.0860,
-  "reasons": [
-    "Breakout pattern confirmed in London session",
-    "RSI indicates oversold reversal",
-    "MACD crossover supports bullish momentum"
-  ],
-  "indicators_used": ["RSI", "MACD", "Bollinger Bands", "Fibonacci retracement"]
+  "trade_id": "AT-20260109-001",
+  "user_instruction": "Trade Gold for me",
+  "market_scan_results": {
+    "opportunities_found": 3,
+    "selected_opportunity": "XAUUSD (Gold)",
+    "reason": "Strong bullish momentum with favorable risk/reward"
+  },
+  "execution_details": {
+    "instrument": "XAUUSD",
+    "action": "BUY",
+    "entry_price": 2058.45,
+    "position_size": 0.5,
+    "stop_loss": 2048.30,
+    "take_profit_1": 2075.20,
+    "take_profit_2": 2090.50,
+    "risk_reward_ratio": "1:3.2"
+  },
+  "departmental_approvals": {
+    "market_intelligence": "APPROVED - Strong trend detected",
+    "quant_research": "APPROVED - 78% confidence signal",
+    "risk_management": "APPROVED - Within 2% risk limit",
+    "portfolio_management": "APPROVED - No correlation conflicts",
+    "strategic_oversight": "APPROVED - Aligned with bullish commodities trend"
+  },
+  "execution_status": "EXECUTED",
+  "broker": "Exness",
+  "timestamp": "2026-01-09T14:32:18Z"
 }
 ```
 
-### 🌍 Core Service 3: Global Financial & AI News Intelligence
+---
 
-**Purpose:** Provides structured, reliable news across global financial and AI markets with fake news elimination.
+##### **Option B: Manual Signal Generation** 📊
+
+**Description:** Users request trading signals and receive AI-powered analysis with precise entry/exit points, then execute trades manually through their preferred platform.
+
+**User Experience:** Request specific asset → Receive ML-powered signal with complete analysis → User executes manually
+
+**Manual Signal Workflow:**
+
+```text
+USER REQUEST (e.g., "Give me EUR/USD signal")
+    ↓
+MARKET INTELLIGENCE DEPARTMENT (Real-time data validation)
+    ↓
+QUANT RESEARCH DEPARTMENT (Technical analysis, ML prediction)
+    ↓
+RISK MANAGEMENT DEPARTMENT (Risk assessment, position sizing recommendation)
+    ↓
+COMPLIANCE & AUDIT DEPARTMENT (Logs request and output)
+    ↓
+EXECUTIVE AUTHORITY (Formats and approves signal for delivery)
+    ↓
+USER RECEIVES SIGNAL (Complete analysis with educational disclaimer)
+    ↓
+USER EXECUTES MANUALLY (Full discretion and control)
+```
+
+**Sample Manual Signal Output:**
+
+```json
+{
+  "signal_id": "MS-20260109-042",
+  "instrument": "EUR/USD",
+  "current_trading_session": "London",
+  "market_conditions": {
+    "price_real_time": 1.0895,
+    "trend": "Bullish",
+    "volatility": "Moderate",
+    "volume_profile": "Above average"
+  },
+  "signal_recommendation": {
+    "direction": "BUY",
+    "entry_price": 1.0902,
+    "stop_loss": 1.0860,
+    "take_profit_1": 1.0940,
+    "take_profit_2": 1.0975,
+    "confidence_level": 0.78,
+    "risk_reward_ratio": "1:2.8"
+  },
+  "analysis_rationale": {
+    "reasons": [
+      "Breakout pattern confirmed in London session",
+      "RSI indicates oversold reversal",
+      "MACD crossover supports bullish momentum",
+      "EUR strength against USD in current macro environment"
+    ],
+    "indicators_used": ["RSI", "MACD", "Bollinger Bands", "Fibonacci retracement", "Volume Profile"],
+    "supporting_factors": [
+      "Price broke above 1.0880 resistance",
+      "50-day MA providing support at 1.0850",
+      "Bullish divergence on 4H timeframe"
+    ]
+  },
+  "risk_assessment": {
+    "risk_category": "MODERATE",
+    "suggested_position_size": "2% of capital",
+    "maximum_risk": "42 pips",
+    "potential_reward": "118 pips",
+    "time_horizon": "4-8 hours"
+  },
+  "disclaimer": "Educational analysis only. Not investment advice. User responsible for all trading decisions.",
+  "timestamp": "2026-01-09T14:35:42Z"
+}
+```
+
+---
+
+**Key Differences Between Options:**
+
+| Feature | Option A (Automated) | Option B (Manual) |
+| ------- | -------------------- | ----------------- |
+| **Execution** | Automated via brokerage API | User executes manually |
+| **User Control** | High-level mandates | Full discretion per trade |
+| **Speed** | Instant execution | User-dependent |
+| **Brokerage Integration** | Required | Not required |
+| **Risk Management** | Enforced automatically | User responsibility |
+| **Best For** | Hands-off trading, consistent execution | Learning, discretionary trading |
+| **Authorization Level** | Can require human approval for each trade | Always advisory only |
+
+#### 🌍 Global Financial & AI News Intelligence
 
 **User Experience:** Real-time verified news → AI-filtered summaries with market impact analysis
 
-**AI Workflow:**
-
-1. **Scraper Agent** collects news from verified sources using web scraping
-2. **NLP Agent** filters for relevance, credibility, and sentiment analysis
-3. **CEO Microservice** summarizes and structures output for easy consumption
-
-**Output Format:**
+**Sample Output:**
 
 ```json
 {
   "topic": "Global AI & Financial Markets",
-  "timestamp": "2026-01-08T12:30:00Z",
   "articles": [
-    {
-      "title": "Federal Reserve Signals Possible Rate Hike",
-      "source": "Reuters",
-      "summary": "The Fed hinted at a potential 25bps rate hike amid rising inflation concerns, affecting USD and equity markets.",
-      "impact": "High",
-      "affected_markets": ["Forex", "US Equities"]
-    },
-    {
-      "title": "Bitcoin Volatility Spikes Amid Regulatory News",
-      "source": "CoinDesk",
-      "summary": "Recent regulations in the EU caused Bitcoin volatility to spike. Traders should monitor support/resistance closely.",
-      "impact": "Medium",
-      "affected_markets": ["Cryptocurrency"]
-    }
+    {"title": "Federal Reserve Signals Possible Rate Hike", "source": "Reuters", "impact": "High", "affected_markets": ["Forex", "US Equities"]},
+    {"title": "Bitcoin Volatility Spikes Amid Regulatory News", "source": "CoinDesk", "impact": "Medium", "affected_markets": ["Cryptocurrency"]}
   ]
 }
 ```
 
 ### Institutional Classification
 
-TradeSavvy operates under the regulatory classification of **analytical intelligence provider** with explicit disclaimers preventing investment advisory designation. The system provides structured market analysis for educational purposes and requires users to make independent trading decisions.
+TradeSavvy operates as an **analytical intelligence provider** for educational purposes, not investment advisory. Users make independent trading decisions.
 
-### Target Architecture
-
-**Vision:** Distributed departmental microservices with event-driven coordination
-**Implementation Strategy:** Evolutionary architecture preserving analytical capabilities while building institutional governance
+**Target Architecture:** Distributed departmental microservices with event-driven coordination
 
 ---
 
-## II. MISSION
+## II. MISSION & VISION
 
 ### Primary Mandate
 
-To operate as an **AI-native digital financial institution** that provides institutional-grade market intelligence, algorithmic trading signals, and global financial news through governed microservice coordination. TradeSavvy acts as an intelligent co-worker for traders, synthesizing information across markets and delivering actionable insights powered by AI, ML models, algorithmic trading rules, and web scraping.
+To operate as an **AI-native digital financial institution** that provides institutional-grade market intelligence, algorithmic trading signals, and global financial news through governed microservice coordination.
 
 **Key Value Propositions:**
 
-✨ **Integrated Institutional Intelligence** - Market analysis, trading signals, and global financial news in one AI-driven platform  
-🤖 **AI-Powered Microservice Governance** - Each department enforces strict roles with independent AI verification  
-📊 **Audit-Ready Output** - All responses stored, traceable, and follow CEO-approved structured formats  
-🗣️ **User-Centric Interactions** - Natural language queries with personalized insights and user memory  
-⚙️ **Actionable Intelligence** - Precise, structured, and executable insights respecting risk constraints
+✨ **Integrated Intelligence** - Market analysis, trading signals, and global financial news in one AI-driven platform
+🤖 **Microservice Governance** - Each department enforces strict roles with independent AI verification  
+📊 **Audit-Ready Output** - All responses stored, traceable, and follow structured formats  
+🗣️ **User-Centric** - Natural language queries with personalized insights and user memory  
+⚙️ **Actionable Intelligence** - Precise, structured, executable insights respecting risk constraints
 
 ### Core Responsibilities
 
-1. **🎯 Market Intelligence Synthesis** - Transform natural language queries into structured, multi-market intelligence using AI/ML
-2. **📈 Algorithmic Signal Generation** - Deliver precise trading signals with ML-powered entry/exit points and risk management
-3. **🌍 Global News Intelligence** - Provide filtered, verified financial news with fake news elimination and impact analysis
-4. **🤖 AI Microservice Coordination** - Orchestrate specialized AI agents for optimal collaborative results
-5. **🔒 Governance-First Operations** - Enforce institutional controls through AI-powered departmental validation
-6. **📋 Transparent AI Reasoning** - Deliver complete rationale behind every AI decision and market assessment
-7. **📁 Institutional Memory** - Maintain user-specific context and complete audit trails of all AI decisions
+1. **Market Intelligence Synthesis** - Transform natural language queries into structured reports using AI/ML
+2. **Algorithmic Signal Generation** - Deliver precise trading signals with ML-powered entry/exit points
+3. **Global News Intelligence** - Provide filtered, verified financial news with fake news elimination
+4. **AI Microservice Coordination** - Orchestrate specialized AI agents for optimal collaborative results
+5. **Governance-First Operations** - Enforce institutional controls through AI-powered validation
+6. **Transparent AI Reasoning** - Deliver complete rationale behind every AI decision
+7. **Institutional Memory** - Maintain user-specific context and complete audit trails
 
 ### Operational Boundaries
 
 **What TradeSavvy Does:**
 
-- **🤖 Processes Natural Language Queries** into structured market intelligence using AI/NLP
-- **📈 Generates Algorithmic Trading Signals** with ML-powered pattern recognition and risk optimization
-- **🌍 Scrapes & Filters Global News** eliminating fake news using AI credibility scoring
-- **⚙️ Coordinates AI Microservices** for optimal collaborative intelligence across departments
-- **📊 Delivers Structured JSON Outputs** for seamless integration and auditability
-- **📁 Maintains User Memory** for personalized insights and context-aware interactions
-- **🔒 Enforces AI Governance** through Risk Management AI with absolute veto authority
-- **📝 Provides Complete Traceability** of all AI decisions and departmental reasoning
-- **🎯 Serves Multi-Asset Classes** (Forex, Crypto, Equities, Commodities) with specialized AI models
+Processes natural language queries, generates algorithmic trading signals, scrapes & filters global news, coordinates AI microservices, delivers structured JSON outputs, maintains user memory, enforces AI governance, provides complete traceability, serves multi-asset classes (Forex, Crypto, Equities, Commodities)
 
 **What TradeSavvy Does Not Do:**
 
-- Execute trades or manage positions autonomously
-- Provide investment advice or financial recommendations  
-- Guarantee analytical accuracy or trading outcomes
-- Operate without explicit human authorization
-- Make capital allocation decisions
+Execute trades autonomously, provide investment advice, guarantee analytical accuracy, operate without human authorization, make capital allocation decisions
 
----
-
-## III. VISION
-
-### Long-Term Institutional Identity
+### Long-Term Vision
 
 TradeSavvy will evolve into a comprehensive digital trading institution capable of supporting sophisticated market participants through multi-department analytical workflows, adversarial-aware risk management, and institutional-grade governance protocols.
 
-### Target Operating Model
+**Target Operating Model:**
 
 ```text
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                    TRADESAVVY DIGITAL INSTITUTION                           │
-│                                                                             │
 │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────────────────┐  │
 │  │    MARKET       │  │     QUANT       │  │       RISK MANAGEMENT       │  │
 │  │ INTELLIGENCE    │  │   RESEARCH      │  │      (VETO AUTHORITY)       │  │
-│  │   DEPARTMENT    │  │  DEPARTMENT     │  │        DEPARTMENT           │  │
 │  └─────────────────┘  └─────────────────┘  └─────────────────────────────┘  │
-│                                   │                                         │
 │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────────────────┐  │
 │  │   PORTFOLIO     │  │  STRATEGIC      │  │     COMPLIANCE & AUDIT      │  │
-│  │  MANAGEMENT     │  │  OVERSIGHT      │  │        DEPARTMENT           │  │
-│  │  DEPARTMENT     │  │  DEPARTMENT     │  │                             │  │
+│  │  MANAGEMENT     │  │  OVERSIGHT      │  │                             │  │
 │  └─────────────────┘  └─────────────────┘  └─────────────────────────────┘  │
-│                                   │                                         │
 │                    ┌─────────────────────────────┐                         │
 │                    │    EXECUTIVE AUTHORITY      │                         │
 │                    │      (FINAL DECISIONS)      │                         │
@@ -243,90 +324,42 @@ TradeSavvy will evolve into a comprehensive digital trading institution capable 
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
-### Scaling Philosophy
-
-**Horizontal Department Expansion** - Add specialized analytical capabilities through new departments rather than expanding existing ones
-
-**Process-Driven Growth** - Scale through better governance and decision-making protocols, not faster execution
-
-**Human-AI Collaboration** - Enhance human decision-making with machine intelligence while preserving human authority
-
-**Institutional Durability** - Build systems that survive market regime changes, regulatory evolution, and technological disruption
+**Scaling Philosophy:** Horizontal department expansion, process-driven growth, human-AI collaboration, institutional durability
 
 ---
 
-## IV. PHILOSOPHY (SSC DOCTRINE)
+## III. PHILOSOPHY (SSC DOCTRINE)
 
-### Systems Thinking
+**Systems Thinking:** Structure creates behavior. Systems must be designed for long-term institutional operation, not short-term feature delivery. Components map to institutional departments with bounded authority, explicit interactions, failure isolation, and scalability through specialization.
 
-**Principle:** Structure creates behavior. Systems must be designed for long-term institutional operation, not short-term feature delivery.
+**Security Posture:** Markets are adversarial environments. All external data is potentially compromised. Capital preservation supersedes profit optimization. Multi-department validation, Risk Management veto authority, human authorization requirements, and sandbox environments protect operations.
 
-**Implementation:**
+**Compliance Framework:** Every decision must be explainable, auditable, and traceable. Regulatory awareness is designed into the architecture. Immutable audit trails, complete decision provenance, regulatory constraint enforcement, and privacy protection are built-in.
 
-- Every component maps to a specific institutional department with bounded authority
-- No implicit coordination between departments - all interactions are explicit and logged
-- Failure isolation ensures individual department problems do not cascade
-- Scalability achieved through department specialization, not monolithic optimization
+**Decision Authority Hierarchy:**
 
-### Security Posture
+1. CAPITAL PRESERVATION (Risk Management Department - Absolute Veto)
+2. ANALYTICAL INTEGRITY (Quant Research Department)
+3. STRATEGIC ALIGNMENT (Strategic Oversight Department)
+4. OPERATIONAL EXECUTION (Executive Authority - Human-Authorized)
 
-**Principle:** Markets are adversarial environments. All external data is potentially compromised, and capital preservation supersedes profit optimization.
-
-**Implementation:**
-
-- Multi-department validation prevents single-point-of-failure decisions
-- Risk Management Department has absolute veto authority over all analytical outputs
-- Executive Authority requires explicit human authorization for final decisions
-- Sandbox environments protect live operations from untested analytical models
-
-### Compliance Framework
-
-**Principle:** Every decision must be explainable, auditable, and traceable. Regulatory awareness is designed into the architecture, not retrofitted.
-
-**Implementation:**
-
-- Immutable audit trails for all departmental interactions and decisions
-- Complete decision provenance from raw data to final output
-- Regulatory constraint enforcement at the architectural level
-- Privacy protection balanced with analytical effectiveness and audit requirements
-
-### Decision Authority Hierarchy
-
-```text
-1. CAPITAL PRESERVATION (Non-negotiable)
-   └── Risk Management Department (Absolute Veto)
-
-2. ANALYTICAL INTEGRITY (Required) 
-   └── Quant Research Department (Model Validation)
-
-3. STRATEGIC ALIGNMENT (Enforced)
-   └── Strategic Oversight Department (Macro Context)
-
-4. OPERATIONAL EXECUTION (Human-Authorized)
-   └── Executive Authority (Final Decision)
-```
-
-**Critical Rule:** Inaction is always preferable to unjustified action. When departments disagree or uncertainty exists, the system must escalate to human authority rather than proceed autonomously.
+**Critical Rule:** Inaction is always preferable to unjustified action.
 
 ---
 
-## V. DEPARTMENTAL & SYSTEM ARCHITECTURE
-
-### Implementation Foundation
-
-**Strategic Approach:** TradeSavvy will be architected as a distributed institutional intelligence platform, evolved from proven technical analysis capabilities into a governed departmental microservice architecture.
+## IV. ARCHITECTURE & DEPARTMENTS
 
 ### Department Mapping
 
-| Department | Core Capability | Microservice Architecture | Authority Scope |
-| ---------- | --------------- | ------------------------- | --------------- |
-| **Market Intelligence** | Real-time data ingestion and validation | Market data pipeline with regime detection | Data quality assurance and normalization |
-| **Quant Research** | Advanced technical analysis and signal generation | Multi-strategy research framework | Analytical model development and validation |
-| **Risk Management** | Risk assessment and constraint enforcement | Governance layer with veto authority | **Absolute veto power over all outputs** |
-| **Portfolio Management** | Multi-position risk aggregation | Portfolio context engine | Cross-asset risk coordination |
-| **Strategic Oversight** | Macro context and strategic alignment | Strategic validation service | Long-term perspective and assumption challenge |
-| **Compliance & Audit** | Immutable decision logging and regulatory compliance | Event-sourced audit infrastructure | Complete decision traceability |
-| **Executive Authority** | Human-supervised final authorization | Decision synthesis and authorization gateway | Final decision approval with human oversight |
+| Department | Core Capability | Authority Scope |
+| ---------- | --------------- | --------------- |
+| **Market Intelligence** | Real-time data ingestion, validation, regime detection | Data quality assurance and normalization |
+| **Quant Research** | Advanced technical analysis and signal generation | Analytical model development and validation |
+| **Risk Management** | Risk assessment and constraint enforcement | **Absolute veto power over all outputs** |
+| **Portfolio Management** | Multi-position risk aggregation | Cross-asset risk coordination |
+| **Strategic Oversight** | Macro context and strategic alignment | Long-term perspective and assumption challenge |
+| **Compliance & Audit** | Immutable decision logging and regulatory compliance | Complete decision traceability |
+| **Executive Authority** | Human-supervised final authorization | Final decision approval with human oversight |
 
 ### Technical Architecture Evolution
 
@@ -335,637 +368,283 @@ TradeSavvy will evolve into a comprehensive digital trading institution capable 
 ```text
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                     DEPARTMENT COORDINATION LAYER                           │
-│                                                                             │
 │ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ ┌─────────────────────────┐ │
 │ │   Market    │ │    Quant    │ │    Risk     │ │      Executive          │ │
 │ │Intelligence │ │  Research   │ │ Management  │ │     Authority           │ │
-│ │ Department  │ │ Department  │ │ Department  │ │   (Human-Supervised)    │ │
-│ │             │ │             │ │  (VETO)     │ │                         │ │
+│ │             │ │             │ │  (VETO)     │ │   (Human-Supervised)    │ │
 │ └─────────────┘ └─────────────┘ └─────────────┘ └─────────────────────────┘ │
-│         │               │               │                     │             │
-│         └───────────────┼───────────────┼─────────────────────┘             │
-│                         │               │                                   │
 │ ┌─────────────┐ ┌─────────────┐ ┌─────────────────────────────────────────┐ │
 │ │ Portfolio   │ │ Strategic   │ │        Compliance & Audit               │ │
-│ │ Management  │ │ Oversight   │ │           Department                    │ │
-│ │ Department  │ │ Department  │ │        (Immutable Logging)              │ │
+│ │ Management  │ │ Oversight   │ │        (Immutable Logging)              │ │
 │ └─────────────┘ └─────────────┘ └─────────────────────────────────────────┘ │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## VI. AGENT / MICROSERVICE MODEL
+## V. AGENT / MICROSERVICE MODEL
 
 ### Bounded Intelligence Principle
 
-**Core Philosophy:** Each department operates as a specialized intelligence with explicit boundaries. No department has complete system knowledge or authority. All departments must coordinate through explicit protocols.
+Each department operates as a specialized intelligence with explicit boundaries. No department has complete system knowledge or authority. All departments coordinate through explicit protocols.
 
 ### Department Interface Specification
 
-#### Input/Output Schema
+**Standard Department Interface:**
 
-```yaml
-Standard Department Interface:
-  Input:
-    - analysis_request: structured request object
-    - context: relevant departmental context
-    - constraints: enforced limitations
-    - audit_trail: previous departmental decisions
-    
-  Output:
-    - decision: structured recommendation
-    - confidence: quantified uncertainty
-    - rationale: explainable decision logic  
-    - risk_assessment: identified risks and mitigations
-    - veto_recommendation: escalation requirements
-```
+- **Input:** analysis_request, context, constraints, audit_trail
+- **Output:** decision, confidence, rationale, risk_assessment, veto_recommendation
 
-#### Department-Specific Authority Models
+### Department Authority Models
 
-#### Market Intelligence Department
+**Market Intelligence:** Data validation and regime detection (TradingView API → Normalized market data)
 
-```text
-Authority: Data validation and regime detection
-Interface: TradingView API → Normalized market data
-Constraints: No analytical interpretation, only data quality assurance
-Output: Raw market data with quality metrics and regime flags
-```
+**Quant Research:** Signal generation and model validation (No position sizing, only directional bias with confidence intervals)
 
-#### Quant Research Department
+**Risk Management (Veto Authority):** Absolute veto over all outputs (Can halt operations, override departments, require human authorization)
 
-```text
-Authority: Signal generation and model validation
-Interface: Normalized data → Technical analysis signals
-Constraints: No position sizing, timing, or execution recommendations
-Output: Directional bias, entry levels, target levels with confidence intervals
-```
+**Portfolio Management:** Multi-position risk aggregation (No individual instrument timing decisions)
 
-#### Risk Management Department (Veto Authority)
+**Strategic Oversight:** Macro alignment and assumption challenge (Cannot override risk management)
 
-```text
-Authority: Absolute veto over all analytical outputs
-Interface: All departmental outputs → Risk-adjusted recommendations
-Constraints: Cannot generate signals, only approve/reject/modify existing ones
-Special Powers: Can halt all operations, override other departments, require human authorization
-```
+**Compliance & Audit:** Decision traceability and regulatory awareness (No decision authority, only monitoring/logging)
 
-#### Portfolio Management Department
+**Executive Authority (Human-Supervised):** Final decision approval (Must be human-authorized for capital-relevant decisions)
 
-```text
-Authority: Multi-position risk aggregation
-Interface: Single-asset analysis → Portfolio context
-Constraints: No individual instrument timing decisions
-Output: Position sizing guidelines, portfolio impact assessment
-```
+### Standard Operating Procedure
 
-#### Strategic Oversight Department
+1. Market Intelligence validates data
+2. Quant Research generates initial analysis
+3. Risk Management evaluates (VETO CHECKPOINT)
+4. Portfolio Management adds context
+5. Strategic Oversight validates macro alignment
+6. Compliance & Audit logs decisions
+7. Executive Authority finalizes (HUMAN AUTHORIZATION REQUIRED)
 
-```text
-Authority: Macro alignment and assumption challenge
-Interface: Technical analysis → Strategic context validation
-Constraints: Cannot override risk management, only provide strategic guidance
-Output: Strategic alignment assessment, assumption challenge reports
-```
-
-#### Compliance & Audit Department
-
-```text
-Authority: Decision traceability and regulatory awareness
-Interface: All departmental communications → Immutable audit log
-Constraints: No decision authority, only monitoring and logging
-Output: Compliance assessment, audit trails, regulatory impact analysis
-```
-
-#### Executive Authority (Human-Supervised)
-
-```text
-Authority: Final decision approval and system-wide coordination
-Interface: All departmental outputs → Final authorized output
-Constraints: Must be human-authorized for all capital-relevant decisions
-Special Powers: Can override any department except Risk Management veto
-```
-
-### Inter-Department Coordination Protocols
-
-#### Standard Operating Procedure
-
-```texttext
-1. Market Intelligence Department validates incoming data
-2. Quant Research Department generates initial analysis
-3. Risk Management Department evaluates all outputs (VETO CHECKPOINT)
-4. Portfolio Management Department adds multi-position context
-5. Strategic Oversight Department validates macro alignment
-6. Compliance & Audit Department logs all decisions
-7. Executive Authority finalizes output (HUMAN AUTHORIZATION REQUIRED)
-```
-
-#### Escalation Protocols
-
-- **Risk Management Veto**: Immediate halt, requires Risk Management explanation
-- **Department Disagreement**: Escalate to Executive Authority with all departmental input
-- **Technical Failure**: Graceful degradation to human-only decision making
-- **Regulatory Concern**: Compliance Department can suspend operations pending review
+**Escalation:** Risk Management Veto = immediate halt; Department Disagreement = escalate to Executive; Technical Failure = graceful degradation; Regulatory Concern = suspend operations
 
 ---
 
-## VII. DECISION & GOVERNANCE FLOW
+## VI. DECISION & GOVERNANCE FLOW
 
 ### Governance Hierarchy
 
 ```text
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                        HUMAN EXECUTIVE AUTHORITY                             │
-│                        (Final Decision Authority)                           │
-└─────────────────────────────┬───────────────────────────────────────────────┘
-                              │
-                              ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                     RISK MANAGEMENT DEPARTMENT                              │
-│                        (Absolute Veto Power)                               │
-└─────────────────────────────┬───────────────────────────────────────────────┘
-                              │
-                              ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│              ANALYTICAL DEPARTMENTS (ADVISORY ROLE)                         │
-│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────────────────┐  │
-│  │ Quant Research  │  │ Market Intel    │  │ Strategic Oversight         │  │
-│  │ (Signal Gen)    │  │ (Data Quality)  │  │ (Macro Alignment)           │  │
-│  └─────────────────┘  └─────────────────┘  └─────────────────────────────┘  │
-│                                   │                                         │
-│  ┌─────────────────┐               │        ┌─────────────────────────────┐  │
-│  │ Portfolio Mgmt  │               │        │ Compliance & Audit          │  │
-│  │ (Position Size) │               │        │ (Immutable Logging)         │  │
-│  └─────────────────┘               │        └─────────────────────────────┘  │
-└─────────────────────────────────────┼─────────────────────────────────────────┘
-                                      │
-                                      ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                          USER OUTPUT                                        │
-│                    (Educational/Analytical Only)                           │
-└─────────────────────────────────────────────────────────────────────────────┘
+HUMAN EXECUTIVE AUTHORITY (Final Decision)
+    ↓
+RISK MANAGEMENT DEPARTMENT (Absolute Veto Power)
+    ↓
+ANALYTICAL DEPARTMENTS (Advisory Role)
+Market Intel | Quant Research | Strategic Oversight | Portfolio Mgmt | Compliance & Audit
+    ↓
+USER OUTPUT (Educational/Analytical Only)
 ```
 
-### Decision Flow Protocols
+### Standard Analytical Request Flow
 
-#### Standard Analytical Request Flow
+**Phase 1: Request Validation** - User submits → System validates → Compliance logs → Market Intelligence confirms data
 
-##### Phase 1: Request Validation
+**Phase 2: Initial Analysis** - Market Intelligence retrieves data → Quant Research generates signals
 
-1. User submits analysis request via Telegram interface
-2. System validates request parameters (instrument, timeframe, user authorization)
-3. Compliance Department logs request and validates regulatory constraints
-4. Market Intelligence Department confirms data availability and quality
+**Phase 3: Risk Assessment (CRITICAL CHECKPOINT)** - Risk Management evaluates → VETO AUTHORITY exercised if needed → If vetoed: halt & escalate; If approved: continue
 
-##### Phase 2: Initial Analysis
+**Phase 4: Portfolio Context** - Portfolio Management adds risk assessment → Strategic Oversight validates macro alignment → Compliance confirms regulatory compliance
 
-1. Market Intelligence Department retrieves and normalizes market data
-2. Quant Research Department generates technical analysis signals
-3. All outputs tagged with confidence intervals and methodology documentation
+**Phase 5: Executive Authorization (HUMAN-SUPERVISED)** - Executive Authority reviews → Human authorization required → Decision logged → Output released with disclaimers
 
-##### Phase 3: Risk Assessment (CRITICAL CHECKPOINT)
+### Emergency Protocols
 
-1. Risk Management Department evaluates all analytical outputs
-2. **VETO AUTHORITY**: Risk Management can reject, modify, or approve outputs
-3. If vetoed: Process halts, Risk Management provides explanation, escalates to Executive Authority
-4. If approved: Process continues to portfolio context phase
+**Risk Management Emergency Veto:** Immediate halt, Executive notified within 30 seconds, complete trail preserved, human review required
 
-##### Phase 4: Portfolio Context
+**Departmental Disagreement:** Escalate to Executive Authority, no automated resolution, conservative bias (provide no analysis rather than questionable analysis)
 
-1. Portfolio Management Department adds multi-position risk assessment
-2. Strategic Oversight Department validates macro environment alignment
-3. Compliance Department confirms regulatory compliance of final output
+**System Technical Failure:** Graceful degradation to human-only decision making, no automated fallback, clear communication to users
 
-##### Phase 5: Executive Authorization (HUMAN-SUPERVISED)
+### Audit & Accountability
 
-1. Executive Authority (human-supervised) reviews all departmental input
-2. **FINAL DECISION AUTHORITY**: Human authorization required for output release
-3. Decision logged with complete departmental input trail
-4. Approved output released to user with appropriate disclaimers
+**Immutable Decision Trail:** Every departmental input logged with timestamp and cryptographic hash, complete provenance, no post-facto editing, quarterly external audit
 
-#### Emergency Protocols
-
-##### Risk Management Emergency Veto
-
-- Immediate halt of all operations
-- Executive Authority notified within 30 seconds
-- Complete decision trail preserved
-- Human review required before resuming operations
-
-##### Departmental Disagreement Resolution
-
-- Conflicting departmental outputs escalated to Executive Authority
-- No automated resolution - human decision required
-- All departmental reasoning preserved in escalation package
-- Conservative bias: when in doubt, provide no analysis rather than questionable analysis
-
-##### System Technical Failure
-
-- Graceful degradation to human-only decision making
-- No automated fallback to simplified analysis
-- Clear communication to users about reduced capability
-- Complete system review required before restoration
-
-### Audit & Accountability Framework
-
-#### Immutable Decision Trail
-
-- Every departmental input logged with timestamp and cryptographic hash
-- Complete decision provenance from raw data to final output
-- No post-facto editing of decision history
-- Quarterly audit review by external risk management consultants
-
-#### Performance Accountability
-
-- Department-level performance metrics tracked over time
-- Regular validation of analytical model effectiveness
-- Systematic review of Risk Management veto decisions
-- Continuous improvement based on outcome measurement
+**Performance Accountability:** Department-level performance metrics, analytical model validation, Risk Management veto review, continuous improvement
 
 ---
 
-## VIII. SECURITY MODEL
+## VII. SECURITY MODEL
 
-### Threat Model & Adversarial Assumptions
+### Threat Model & Mitigation
 
-#### Market-Specific Threats
+**Market-Specific Threats:**
 
-##### Data Manipulation Attacks
+- Data Manipulation: Multi-source validation, anomaly detection, human oversight
+- Signal Injection: Historical pattern validation, multi-timeframe confirmation, Risk Management veto
+- Social Engineering: User authentication, interaction logging, suspicious pattern detection
 
-- Assumption: All external market data sources can be compromised
-- Mitigation: Multi-source validation, anomaly detection, human oversight for unusual signals
+**System-Level Threats:**
 
-##### Signal Injection Attacks
+- Department Compromise: Department isolation, cross-validation, anomaly detection
+- Privilege Escalation: Cryptographic authorization chains, immutable audit logs, human-in-the-loop
+- Data Exfiltration: End-to-end encryption, compartmentalized access, minimal data retention
 
-- Assumption: Sophisticated actors may attempt to trigger false signals
-- Mitigation: Historical pattern validation, multi-timeframe confirmation, Risk Management veto authority
+### Security Architecture Layers
 
-##### Social Engineering via Telegram Interface
+**Layer 1 - External Interface:** Telegram Bot with rate limiting, input validation, encrypted communication, session management
 
-- Assumption: Users may be impersonated or manipulated
-- Mitigation: User authentication, interaction logging, suspicious pattern detection
+**Layer 2 - Department Isolation:** Cryptographically signed communications, capability-based access control, department-specific secrets, network segmentation
 
-#### System-Level Threats
+**Layer 3 - Data Security:** Encryption at rest and in transit, minimal data retention, user data anonymization, secure key management
 
-##### Department Compromise
-
-- Assumption: Individual departments may be compromised without system awareness
-- Mitigation: Department isolation, cross-validation protocols, anomaly detection
-
-##### Privilege Escalation
-
-- Assumption: Attackers may attempt to bypass Risk Management or Executive Authority
-- Mitigation: Cryptographic authorization chains, immutable audit logs, human-in-the-loop requirements
-
-##### Data Exfiltration
-
-- Assumption: User analysis history and system intelligence may be targeted
-- Mitigation: End-to-end encryption, compartmentalized data access, minimal data retention
-
-### Security Architecture
-
-#### Defense in Depth Strategy
-
-#### Layer 1: External Interface Security
-
-```text
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                         TELEGRAM BOT INTERFACE                              │
-│  • Rate limiting and user authentication                                   │
-│  • Input validation and sanitization                                       │
-│  • Encrypted communication channels                                        │
-│  • User session management with timeout                                    │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
-
-#### Layer 2: Department Isolation
-
-```text
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                      INTER-DEPARTMENT SECURITY                              │
-│  • Cryptographically signed inter-department communications                │
-│  • Capability-based access control                                         │
-│  • Department-specific secret management                                   │
-│  • Network segmentation and firewall rules                                 │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
-
-#### Layer 3: Data Security
-
-```text
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                           DATA PROTECTION                                   │
-│  • Encryption at rest and in transit                                       │
-│  • Minimal data retention policies                                         │
-│  • User data anonymization where possible                                  │
-│  • Secure key management and rotation                                      │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
-
-#### Layer 4: Authorization and Audit
-
-```text
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                     AUTHORIZATION & MONITORING                              │
-│  • Human authorization checkpoints                                         │
-│  • Immutable audit logging                                                 │
-│  • Real-time anomaly detection                                             │
-│  • Regular security assessments and penetration testing                    │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
+**Layer 4 - Authorization & Audit:** Human authorization checkpoints, immutable audit logging, real-time anomaly detection, regular security assessments
 
 ### Access Control Matrix
 
-| Component | Market Intel | Quant Research | Risk Mgmt | Portfolio | Strategic | Compliance | Executive |
-| --------- | ------------ | -------------- | --------- | --------- | --------- | ---------- | --------- |
-| **Raw Market Data** | Read/Write | Read Only | Read Only | Read Only | Read Only | Audit Only | Read Only |
-| **Analysis Signals** | No Access | Read/Write | Read/Modify/Veto | Read Only | Read/Modify | Audit Only | Read/Approve |
-| **User Data** | No Access | No Access | Risk Metrics Only | Position Data | No Access | Audit Only | Full Access |
-| **System Config** | No Access | No Access | Risk Parameters | No Access | No Access | Audit Only | Full Access |
-| **Audit Logs** | No Access | No Access | Read Only | No Access | No Access | Read/Write | Read Only |
+| Component | Market Intel | Quant | Risk Mgmt | Portfolio | Strategic | Compliance | Executive |
+| --------- | ------------ | ----- | --------- | --------- | --------- | ---------- | --------- |
+| **Raw Market Data** | Read/Write | Read | Read | Read | Read | Audit | Read |
+| **Analysis Signals** | No Access | Read/Write | Read/Modify/Veto | Read | Read/Modify | Audit | Read/Approve |
+| **User Data** | No Access | No Access | Risk Metrics Only | Position Data | No Access | Audit | Full Access |
+| **Audit Logs** | No Access | No Access | Read | No Access | No Access | Read/Write | Read |
 
-### Incident Response Protocols
+### Incident Response (Level 1-4)
 
-#### Security Incident Classification
-
-##### Level 1: Informational
-
-- Unusual but not suspicious user patterns
-- Minor system performance anomalies
-- Response: Enhanced monitoring, no operational impact
-
-##### Level 2: Warning
-
-- Repeated failed authentication attempts
-- Unusual market data patterns affecting analysis
-- Response: Risk Management review, potential analysis restrictions
-
-##### Level 3: Critical
-
-- Evidence of data manipulation or unauthorized access
-- Department compromise indicators
-- Response: Immediate system shutdown, human investigation required
-
-##### Level 4: Catastrophic
-
-- Confirmed security breach with user data exposure
-- Complete department compromise
-- Response: Full system isolation, external security audit, user notification
+**Level 1 (Informational):** Enhanced monitoring, no operational impact
+**Level 2 (Warning):** Risk Management review, potential analysis restrictions  
+**Level 3 (Critical):** Immediate system shutdown, human investigation required
+**Level 4 (Catastrophic):** Full system isolation, external security audit, user notification
 
 ---
 
-## IX. COMPLIANCE MODEL
+## VIII. COMPLIANCE MODEL
 
 ### Regulatory Positioning
 
-**Primary Classification:** Educational analytical software providing structured market information
-**Secondary Limitations:** Explicitly not providing investment advice or financial recommendations
-**Regulatory Compliance:** Designed to operate within retail analytical software constraints
+**Classification:** Educational analytical software (not investment advice or financial recommendations)  
+**User Authority:** Explicit preservation of user decision-making  
+**Disclaimers:** No guarantee of analytical accuracy or trading outcomes
 
-### Compliance Implementation Framework
+### Core Regulatory Principles
 
-#### Core Regulatory Principles
+**Investment Advice Disclaimer:** All outputs include clear disclaimers, system provides analytical observations only, user decision-making authority preserved
 
-##### Investment Advice Disclaimer Protocol
+**Data Protection & Privacy:** User data minimized/anonymized, 180-day retention policy, no PII beyond Telegram user ID, clear privacy policy
 
-- All outputs must include clear disclaimers preventing investment advice interpretation
-- System cannot provide buy/sell recommendations, only analytical observations
-- User decision-making authority must be explicitly preserved and communicated
-- No guarantee of analytical accuracy or trading outcome success
+**Financial Services Compliance:** No custody/handling of capital, no trade execution, no portfolio management beyond analytical context
 
-##### Data Protection and Privacy
+### Audit & Documentation
 
-- User interaction data minimized and anonymized where possible
-- 180-day retention policy for user analysis history
-- No personally identifiable information storage beyond Telegram user ID
-- Clear privacy policy accessible to all users
+**Required Audit Data:** User requests, data sources, departmental analysis, Risk Management decisions, Executive Authority authorizations, final outputs
 
-##### Financial Services Compliance
+**Audit Trail Integrity:** Cryptographic hashing, immutable storage, regular backup/verification, external audit accessibility
 
-- No custody or handling of user capital
-- No trade execution capabilities or integration
-- No portfolio management services beyond analytical context
-- Clear separation between analysis and actionable financial advice
+**Decision Provenance:** Complete traceability from raw data to output, all contributing departments identified, rationale documentation, Risk Management veto explanations
 
-#### Audit and Documentation Requirements
+### User Communication Compliance
 
-##### Immutable Audit Trail Standards
-
-```yaml
-Required Audit Data:
-  - User request timestamp and content
-  - Data sources and retrieval timestamps  
-  - Departmental analysis inputs and outputs
-  - Risk Management decisions and rationale
-  - Executive Authority authorization decisions
-  - Final output content and delivery confirmation
-
-Audit Trail Integrity:
-  - Cryptographic hashing of all audit entries
-  - Immutable storage preventing post-facto modification
-  - Regular backup and verification procedures
-  - External audit accessibility for regulatory review
-```
-
-##### Decision Provenance Requirements
-
-- Complete traceability from raw market data to final output
-- Identification of all departments contributing to analysis
-- Rationale documentation for all significant analytical decisions
-- Risk Management veto explanations with supporting evidence
-
-#### User Communication Compliance
-
-##### Mandatory Disclaimer Language
+**Mandatory Disclaimer:**
 
 ```text
-"This analysis is provided for educational purposes only and does not constitute 
+This analysis is provided for educational purposes only and does not constitute 
 investment advice, financial recommendations, or trading signals. All trading 
 decisions remain solely the responsibility of the user. Market conditions can 
-change rapidly, and past analytical accuracy does not guarantee future results. 
-Users should conduct their own research and consult qualified financial 
-advisors before making investment decisions."
+change rapidly, and past analytical accuracy does not guarantee future results.
 ```
 
-##### User Capability Limitations
-
-- System cannot execute trades or manage positions
-- No access to user brokerage accounts or financial information
-- No position sizing recommendations beyond analytical context
-- Clear communication about system analytical vs. advisory limitations
+**User Limitations:** No trade execution, no brokerage access, no position sizing recommendations, clear system limitations communication
 
 ### Regulatory Risk Management
 
-#### Continuous Compliance Monitoring
+**Continuous Monitoring:** Real-time output scanning, automated disclaimer inclusion, user interaction pattern review, compliance control documentation
 
-- Real-time scanning of all outputs for investment advice language
-- Automated disclaimer inclusion and verification
-- Regular review of user interaction patterns for compliance violations
-- Documentation of compliance control effectiveness
-
-##### Regulatory Change Adaptation
-
-- Quarterly review of regulatory environment changes
-- Compliance framework updates integrated into department protocols
-- Legal review of all system capabilities and output formats
-- Proactive engagement with regulatory guidance development
+**Regulatory Change Adaptation:** Quarterly regulatory environment review, compliance framework updates, legal review of capabilities, proactive regulatory engagement
 
 ---
 
-## X. EVOLUTION ROADMAP
+## IX. EVOLUTION ROADMAP
 
-### Phase 1: Foundation Architecture
+### Phase 1: Foundation Architecture (Current)
 
 **Objective:** Establish institutional framework with proven technical analysis capabilities
 
-**Foundation Components:**
+**Components:** Comprehensive technical analysis engine, TradingView integration, secure Telegram interface, compliant data persistence
 
-- Comprehensive technical analysis engine with multi-asset support
-- TradingView integration for real-time market data
-- Secure user interface with session management
-- Compliant data persistence with appropriate retention policies
+**Enhancements:** Enhanced audit logging, risk management disclaimers, compliance framework, performance monitoring, security hardening
 
-**Immediate Enhancements:**
-
-- Enhanced audit logging for all user interactions and analysis outputs
-- Risk management disclaimers and compliance framework integration
-- Performance monitoring for existing analytical models
-- Security hardening of current Telegram interface
-
-**Success Criteria:**
-
-- Robust analytical capabilities with institutional governance
-- Complete audit trail implementation
-- Compliance framework operational
-- Foundation for departmental architecture established
+**Success Criteria:** Robust analytical capabilities, complete audit trail, operational compliance framework, foundation for departmental architecture
 
 ### Phase 2: Departmental Decomposition (Months 1-3)
 
 **Objective:** Extract department-specific functionality from monolithic implementation while preserving service continuity
 
-**Architecture Implementation Strategy:**
+**Implementation Sequence:**
 
-Department Services (Containerized Architecture)
+1. Compliance & Audit Department (Immutable logging)
+2. Market Intelligence Department (Data pipeline)
+3. Quant Research Department (Multi-strategy analysis)
+4. Risk Management Department (Governance layer)
+5. Executive Authority (Authorization gateway)
+6. Portfolio Management Department (Cross-position risk)
+7. Strategic Oversight Department (Macro context)
 
-Implementation Sequence:
-
-1. Compliance & Audit Department (Immutable logging infrastructure)
-2. Market Intelligence Department (Data pipeline abstraction)  
-3. Quant Research Department (Multi-strategy analysis framework)
-4. Risk Management Department (Governance and validation layer)
-5. Executive Authority (Authorization and decision synthesis)
-6. Portfolio Management Department (Cross-position risk coordination)
-7. Strategic Oversight Department (Macro context validation)
-
-**Implementation Approach:**
-
-- Containerized microservice architecture with health monitoring
-- gRPC inter-department communication protocols
-- Shared event-sourced data layer with department-specific access controls
-- Comprehensive testing framework for department interactions
-- Performance optimization ensuring optimal analysis delivery
+**Approach:** Containerized microservices, gRPC communication, shared event-sourced data layer, comprehensive testing, performance optimization
 
 ### Phase 3: Advanced Intelligence Integration (Months 4-6)
 
-**Objective:** Enhanced analytical capabilities through department specialization and advanced data integration
+**Capabilities:** Advanced market regime detection, multi-timeframe correlation analysis, portfolio-level risk aggregation, macro economic context integration
 
-**Capability Expansion:**
+**Infrastructure:** Real-time streaming, advanced signal processing, ML model development framework, A/B testing infrastructure
 
-- Advanced market regime detection via Market Intelligence Department
-- Multi-timeframe correlation analysis via Quant Research Department
-- Portfolio-level risk aggregation via Portfolio Management Department
-- Macro economic context integration via Strategic Oversight Department
-
-**Technical Infrastructure:**
-
-- Real-time market data streaming infrastructure
-- Advanced signal processing and pattern recognition
-- Machine learning model development and validation framework
-- A/B testing infrastructure for analytical model improvement
-
-**Governance Enhancement:**
-
-- Automated Risk Management veto protocols with explainable AI
-- Advanced audit analytics for compliance monitoring
-- User behavior analysis for improved analytical personalization
-- Regulatory compliance automation for multi-jurisdiction operation
+**Governance:** Automated Risk Management veto protocols with explainable AI, advanced audit analytics, user behavior analysis, multi-jurisdiction compliance
 
 ### Phase 4: Institutional Scale Operations (Months 7-12)
 
-**Objective:** Scale to institutional-grade operations supporting sophisticated market participants
+**Advanced Features:** Multi-asset portfolio optimization, advanced risk management with stress testing, real-time market sentiment integration, institutional data provider integration
 
-**Advanced Features:**
+**Operational Excellence:** 99.9% uptime SLA, advanced security monitoring, multi-jurisdiction compliance automation, professional-grade audit/reporting
 
-- Multi-asset portfolio optimization recommendations
-- Advanced risk management with stress testing capabilities
-- Real-time market sentiment integration and analysis
-- Integration with institutional data providers beyond TradingView
-
-**Operational Excellence:**
-
-- 99.9% uptime SLA with redundant infrastructure
-- Advanced security monitoring with threat detection
-- Regulatory compliance automation for multiple jurisdictions
-- Professional-grade audit and reporting capabilities
-
-**Partnership Development:**
-
-- Integration with institutional market data providers
-- Collaboration with regulatory technology providers
-- Academic partnerships for analytical model validation
-- Professional market participant beta testing programs
+**Partnership Development:** Institutional data providers, regulatory technology providers, academic partnerships, professional market participant beta testing
 
 ### Long-Term Vision (Year 2+)
 
-**Strategic Evolution:**
+**Strategic Evolution:** Advanced AI-human collaboration, regulatory technology leadership, open-source contribution, industry standard-setting
 
-- Advanced AI-human collaboration protocols for market analysis
-- Regulatory technology leadership in analytical software compliance
-- Open-source contribution of departmental architecture patterns
-- Industry standard-setting for institutional analytical software design
-
-**Institutional Differentiation:**
-
-- Recognized authority in risk-managed analytical software architecture
-- Preferred analytical platform for sophisticated retail and institutional users
-- Thought leadership in adversarial-aware financial technology design
-- Demonstrated long-term stability and analytical effectiveness
+**Institutional Differentiation:** Authority in risk-managed analytical software, preferred platform for sophisticated users, thought leadership in adversarial-aware financial technology, demonstrated long-term stability
 
 ---
 
 *This document represents the institutional charter for TradeSavvy operations and serves as the authoritative reference for all system development, governance, and compliance activities.*
 
 **Document Authority:** ByteCrest Financial Technology  
-**Last Updated:** [System Timestamp]  
-**Next Review:** Quarterly  
 **Classification:** Internal Technical Constitution
-| Crypto | 24/7 | Always returns `True` |
-| US Stocks | 13:30 - 20:00 Mon-Fri | `is_market_open()` |
-
-**Note:** Market closure does not block analysis; user receives warning message only.
-
-### Compliance-Relevant Patterns
-
-| Pattern | Implementation | Compliance Relevance |
-| ------- | -------------- | ------------------- |
-| Data Retention | 180-day auto-purge | Supports data minimization principles |
-| Disclaimer | Displayed in `/help` output | Risk disclosure for financial information |
-| User Identification | Telegram user ID only | No PII collection beyond platform-provided ID |
-| Audit Logging | Not implemented | Gap for regulated financial services |
-| Access Controls | Not implemented | Gap for regulated financial services |
 
 ---
 
-## Operational Notes
+## APPENDIX: CURRENT IMPLEMENTATION DETAILS
 
 ### Deployment
 
 1. Provision Python 3.12.7 runtime
 2. Install dependencies: `pip install -r requirements.txt`
-3. Configure environment variables:
-   - `TELEGRAM_BOT_TOKEN`
-   - `ADMIN_USERNAME`
+3. Configure environment variables: `TELEGRAM_BOT_TOKEN`, `ADMIN_USERNAME`
 4. Execute: `python main.py`
+
+### Market Sessions
+
+| Market | Hours (UTC) | Status Check |
+| ------ | ----------- | ------------ |
+| Tokyo | 00:00 - 09:00 Sun-Thu | `is_market_open()` |
+| London | 08:00 - 16:30 Mon-Fri | `is_market_open()` |
+| New York | 13:30 - 20:00 Mon-Fri | `is_market_open()` |
+| Crypto | 24/7 | Always returns `True` |
+| US Stocks | 13:30 - 20:00 Mon-Fri | `is_market_open()` |
+
+**Note:** Market closure does not block analysis; user receives warning message only.
+
+### Known Limitations (Current Implementation)
+
+1. Single-file architecture limits maintainability and testability
+2. Pickle serialization creates security and portability concerns
+3. No database backend prevents horizontal scaling
+4. Hardcoded instrument lists require code changes to support new pairs
+5. No error recovery for TradingView API failures beyond exception catch
+6. pandas and numpy imported but underutilized (potential dead dependencies)
 
 ### Monitoring Considerations
 
@@ -974,30 +653,15 @@ Implementation Sequence:
 - Logging to stdout only
 - Process crash detection depends on platform (Heroku dyno restart)
 
-### Known Limitations
+### Version Information
 
-1. **Single-file architecture** limits maintainability and testability
-2. **Pickle serialization** creates security and portability concerns
-3. **No database backend** prevents horizontal scaling
-4. **Hardcoded instrument lists** require code changes to support new pairs
-5. **No error recovery** for TradingView API failures beyond exception catch
-6. **pandas and numpy imported but underutilized** (potential dead dependencies)
-
----
-
-## Version Information
-
-- **Application Version:** 1.0.0 (per help text)
+- **Application Version:** 1.0.0
 - **Python Runtime:** 3.12.7
 - **Last Documentation Update:** January 2026
 
 ---
 
-*This document was generated through static code analysis and reflects the implemented behavior of the system as of the commit on the `main` branch.*
-
----
-
-## STRATEGIC EVOLUTION: INSTITUTIONAL UPSCALING ROADMAP
+*Document generated through static code analysis of the `main` branch implementation.*
 
 ## Preamble
 
@@ -1566,7 +1230,3 @@ The following capabilities represent institutional scaling directions. They are 
 ### Regulatory Notice
 
 TradeSavvy, in its current and planned states, provides analytical information only. No component of this system constitutes financial advice, investment recommendation, or solicitation to trade. Users bear full responsibility for trading decisions. Past analytical accuracy does not guarantee future performance.
-
----
-
-*This whitepaper defines the institutional architecture for TradeSavvy as a distributed digital trading institution, providing the comprehensive framework for development and implementation of sophisticated analytical intelligence with institutional-grade governance and risk management.*
