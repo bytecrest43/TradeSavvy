@@ -1,15 +1,24 @@
 # TradeSavvy
 
-The AI-Powered Digital Trading Institution for Intelligent Market Analysis
+> **The AI-Powered Digital Trading Institution for Intelligent Market Analysis**
 
-![Python](https://img.shields.io/badge/python-3.12.7-blue.svg)
-![TradingView](https://img.shields.io/badge/TradingView-API-green.svg)
-![Telegram](https://img.shields.io/badge/Telegram-Bot-blue.svg)
-![License](https://img.shields.io/badge/license-Proprietary-red.svg)
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)](https://nextjs.org/)
+[![Convex](https://img.shields.io/badge/Convex-Backend-orange?logo=convex)](https://convex.dev/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-blue?logo=postgresql)](https://www.postgresql.org/)
+[![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?logo=docker)](https://www.docker.com/)
+[![TradingView](https://img.shields.io/badge/TradingView-API-green)](https://www.tradingview.com/)
+[![Telegram](https://img.shields.io/badge/Telegram-Bot-blue?logo=telegram)](https://telegram.org/)
+[![License](https://img.shields.io/badge/License-Proprietary-red)](LICENSE)
 
-**A Product of ByteCrest Financial Technology**  
-*"Think in SSC" — Systems, Security, and Compliance*  
-[bytecrxt.com](https://bytecrxt.com)
+<p align="center">
+  <strong>A Product of ByteCrest Financial Technology</strong><br/>
+  <em>"Think in SSC" — Systems, Security, and Compliance</em><br/>
+  <a href="https://bytecrxt.com">bytecrxt.com</a>
+</p>
+
+---
+
+## TradeSavvy Profile
 
 TradeSavvy is a production-grade **AI-native digital financial institution** that provides institutional-grade market intelligence, algorithmic trading support, and global financial news. Designed for traders across Forex, Cryptocurrency, Equities, and Commodities markets, TradeSavvy delivers real-time analysis, precise trading signals, and AI-filtered news that adapts to market conditions and user preferences.
 
@@ -17,11 +26,7 @@ At its core is a **governed AI co-worker** that synthesizes information across m
 
 ---
 
-## I. INSTITUTIONAL PROFILE
-
-### System Definition
-
-#### Powered By
+### Powered By
 
 - **Artificial Intelligence & Machine Learning Models** for pattern recognition and market analysis
 - **Algorithmic Trading Rules** for precise signal generation and risk management
